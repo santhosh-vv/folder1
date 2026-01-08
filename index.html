@@ -184,14 +184,6 @@
 
         <!-- SURPRISE ELEMENTS -->
 
-        <!-- Hidden Love Messages -->
-        <div class="hidden-messages">
-            <div class="secret-message msg-1" data-message="Every moment with you is magical ✨"></div>
-            <div class="secret-message msg-2" data-message="You make my heart smile 💖"></div>
-            <div class="secret-message msg-3" data-message="Forever and always 💕"></div>
-            <div class="secret-message msg-4" data-message="You're my favorite person 🌟"></div>
-        </div>
-
         <!-- Aurora Wave Effect -->
         <div class="aurora-wave"></div>
 
@@ -200,17 +192,6 @@
 
         <!-- Click Burst Container -->
         <div id="burstContainer"></div>
-
-        <!-- Secret Reveal Overlay -->
-        <div id="secretReveal" class="secret-reveal">
-            <div class="reveal-content">
-                <h2 class="reveal-title">💝 A Special Message 💝</h2>
-                <p class="reveal-text">You are the most beautiful thing that has ever happened to me.<br>
-                    Every day with you is a blessing I cherish.<br>
-                    Thank you for being you. ❤️</p>
-                <button class="close-reveal" onclick="closeReveal()">Close ✨</button>
-            </div>
-        </div>
     </div>
 
     <script>
@@ -325,65 +306,6 @@
             }
         }
 
-        // SURPRISE 3: Hidden Messages on Hover
-        const secretMessages = document.querySelectorAll('.secret-message');
-        secretMessages.forEach(msg => {
-            msg.addEventListener('mouseenter', function () {
-                showMessage(this.dataset.message, event.pageX, event.pageY);
-            });
-        });
-
-        function showMessage(text, x, y) {
-            const messageEl = document.createElement('div');
-            messageEl.className = 'floating-message';
-            messageEl.textContent = text;
-            messageEl.style.left = x + 'px';
-            messageEl.style.top = y + 'px';
-            document.body.appendChild(messageEl);
-
-            setTimeout(() => {
-                messageEl.style.opacity = '1';
-                messageEl.style.transform = 'translateY(-30px)';
-            }, 10);
-
-            setTimeout(() => {
-                messageEl.style.opacity = '0';
-                messageEl.style.transform = 'translateY(-60px)';
-            }, 2500);
-
-            setTimeout(() => messageEl.remove(), 3000);
-        }
-
-        // SURPRISE 4: Secret Reveal on Triple Click
-        let tripleClickCount = 0;
-        let tripleClickTimer = null;
-
-        heartIcon.addEventListener('click', function (e) {
-            e.stopPropagation();
-            tripleClickCount++;
-
-            if (tripleClickCount === 1) {
-                tripleClickTimer = setTimeout(() => {
-                    tripleClickCount = 0;
-                }, 500);
-            } else if (tripleClickCount === 3) {
-                clearTimeout(tripleClickTimer);
-                tripleClickCount = 0;
-                showSecretReveal();
-            }
-        });
-
-        function showSecretReveal() {
-            const reveal = document.getElementById('secretReveal');
-            reveal.classList.add('active');
-            createConfetti();
-        }
-
-        function closeReveal() {
-            const reveal = document.getElementById('secretReveal');
-            reveal.classList.remove('active');
-        }
-
         // SURPRISE 5: Aurora Wave Animation (auto-triggers periodically)
         setInterval(() => {
             const aurora = document.querySelector('.aurora-wave');
@@ -413,11 +335,6 @@
 
             setTimeout(() => sparkle.remove(), 1000);
         }
-
-        // Welcome message
-        setTimeout(() => {
-            showMessage('💝 Click around to discover surprises! 💝', window.innerWidth / 2, 50);
-        }, 2000);
     </script>
 </body>
 

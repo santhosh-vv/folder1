@@ -931,7 +931,7 @@ body::before {
     font-weight: 400;
     font-style: normal;
     color: #6B5B5A;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 1.5rem;
     letter-spacing: 4px;
     /* Soft, subtle shadow */
     text-shadow:
